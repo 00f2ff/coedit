@@ -1,11 +1,9 @@
 {
-  "name": "M2C-SimpleStaticServer",
+  "name": "coedit",
   "version": "1.0.0",
-  "description": "M2C Simple Static Server",
+  "description": "An editor for you and your friends",
   "author": {
-    "name": "Joe mertz",
-    "email": "JoeMertz@cmu.edu",
-    "url": "http://www.andrew.cmu.edu/course/67-328"
+    "name": "Duncan McIsaac",
   },
   "repository": {
     "type": "git",
@@ -17,7 +15,9 @@
   },
   "dependencies": {
     "express": "4.8",
-    "morgan": "1.2"
+    "mongodb": "^1.4.23",
+    "morgan": "1.2",
+    "socket.io": "^1.2.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],

@@ -1,6 +1,7 @@
 var express = require('express'),
     morgan  = require('morgan'),
-    path = require('path');
+    path = require('path'),
+    http = require('http');
 
 // Create a class that will be our main application
 var SimpleStaticServer = function() {
@@ -26,13 +27,28 @@ var SimpleStaticServer = function() {
      * use default values of localhost (127.0.0.1) and 33333 (arbitrary).
      */
     self.ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-    self.port      = process.env.OPENSHIFT_NODEJS_PORT || 33333;
+    self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8000;
+
+    // Link socket.io to app with an http server
+    var httpServer = http.Server(self.app);
+    var sio = require('socket.io');
+    var io = sio(httpServer);
+
+    // Start listening on the specific IP and port
+    httpServer.listen(self.port, self.ipaddress, function() {
+      console.log('%s: Node server started on %s:%d ... ',
+        Date(Date.now()), self.ipaddress, self.port);
+    });
+
+    // Controller for socket.io
+    var coeditSockets = require('./routes/serverSocket.js');
+    coeditSockets.init(io);
 
     //  Start listening on the specific IP and PORT
-    self.app.listen(self.port, self.ipaddress, function() {
-      console.log('%s: Node server started on %s:%d ...',
-                        Date(Date.now() ), self.ipaddress, self.port);
-    });
+    // self.app.listen(self.port, self.ipaddress, function() {
+    //   console.log('%s: Node server started on %s:%d ...',
+    //                     Date(Date.now() ), self.ipaddress, self.port);
+    // });
   };
 }; 
 

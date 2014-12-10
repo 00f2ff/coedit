@@ -1,0 +1,108 @@
+html, body {
+	width: 100%;
+	height: 100%;
+} /* hopefully this won't be edited by users */
+
+#coedit_editor-box {
+	float: left; 
+	width: 30%;
+	height: 100%;
+}
+
+#coedit_html-editor {
+	width: 100%;
+	height: 40%;
+	overflow: auto;
+	resize: none;
+}
+
+#coedit_css-editor {
+	width: 100%;
+	height: 40%;
+	overflow: auto;
+	resize: none;
+}
+
+#coedit_website-info {
+	float: left;
+	margin-left: 5%;
+	width: 60%; 
+	height: 60%;
+}
+
+#coedit_site-box {
+	height: 100%;
+	border: 2px solid black;
+	overflow: auto;
+}
+
+#coedit_save-website-form {
+	margin-top: 1%;
+}
+
+#coedit_name-form {
+	position: absolute;
+	margin: 50 auto;
+	visibility: hidden;
+}
+/*
+#coedit_list-all-sites {
+	float: right;
+}*/
+
+/* First breakpoint is larger than 800px */	
+/*@media all and (min-width: 50em){
+	html, body {
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	} /* hopefully this won't be edited by users */
+
+	/*#coedit_editor-box {
+		float: left; 
+		width: 30%;
+		height: 40%;
+	}
+
+	#coedit_html-editor {
+		width: 100%;
+		height: 30%;
+		overflow: auto;
+		resize: none;
+	}
+
+	#coedit_css-editor {
+		width: 100%;
+		height: 30%;
+		/*overflow: auto;*/
+/*		resize: none;
+	}
+
+	#coedit_site-box {
+		float: left;
+		width: 60%; 
+		height: 60%;
+		border: 2px solid black;
+		margin-left: 5%;
+		overflow: auto;
+	}
+
+	#coedit_name-form {
+		position: absolute;
+		margin: 50 auto; /* this needs to be responsive */
+/*		visibility: hidden;
+	}
+	
+}*/
+
+/*
+Next to Coedit logo on mobile page, display buttons for seeing
+the page view, and seeing the quickmenu helper <-- that should
+track where the cursor is 
+*/
+
+/*
+
+I need to decide whether i want to style my stuff (div, html, body, etc) as !important, or let
+people edit that too 
+*/
