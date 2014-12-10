@@ -67,7 +67,8 @@ socket.on('user', function(data) {
 	});
 
 	// website save handler
-	$('#coedit_save-website-form button').on('mouseup', function() { // the click sometimes registers twice
+	$('#coedit_save-website-form button').submit(function(ev) {
+		// ev.preventDefault(); // stop normal form behavior
 		var name = $('#coedit_save-website-form input[name="name"]').val();
 		var htmlCode = $('#coedit_html-editor').val();
 		var cssCode = $('#coedit_css-editor').val();
