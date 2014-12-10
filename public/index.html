@@ -1,10 +1,85 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Test static html file.</title>
+	<title>COEDIT</title>
 </head>
 <body>
-  <p> This is a test static html file.</p>
+	<h1>Coedit</h1>
+	<div id="coedit_editor-box">
+		<span>HTML: </span><span id="coedit_html-name"></span><br />
+		<textarea id="coedit_html-editor"></textarea><br /><br />
+		<span>CSS: </span><span id="coedit_css-name"></span><br />
+		<textarea id="coedit_css-editor" placeholder="Type CSS here"></textarea>
+	</div>
+	<div id="coedit_website-info">
+		<span>&nbsp;</span>
+		<div id="coedit_site-box"></div>
+		<form id="coedit_save-website-form">
+			<label>Name: </label><input type="text" name="name"/>
+			<button>Save</button> <!-- change the text of this after submit, and change action to update? -->
+		</form>
+		<button id="coedit_list-all-sites">List All Sites</button>
+		<div id="coedit_website-list"></div>
+	</div>
+	<!-- <form id="dropbox-form">
+		<label>Name: </label><input type="text" name="filename"/>
+		<button>Send to Dropbox</button>
+	</form> -->
+	<!-- <button id="dropbox-write">Send file to Dropbox</button> -->
+	<form id="coedit_name-form"> <!-- this still needs nice styling -->
+		<label>Name: </label><input type="text" name="name"/>
+		<button>Submit</button>
+	</form>
+
+<!-- Put JavaScript at end of body -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="main.css">
+<!-- socket.io file -->
+<script src="/socket.io/socket.io.js"></script>
+<!-- little script to prepopulate the HTML textarea -->
+<script>
+var indent = '  '; // permits indentation size change
+var markup = '<html>\n' +
+							'<head>\n' + indent + 
+								'<title></title>\n' + 
+							'</head>\n' + 
+							'<body>\n' + indent + '\n' + 
+							'</body>\n' + 
+							'</html>'; // default markup string
+$('#coedit_html-editor').val(markup);
+</script>
+
+<!-- Client-side javascript -->
+<script src="./javascripts/clientSocket.js"></script>
+<!-- Dropbox datastore SDK -->
+<!-- <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script> -->
+<!-- <script src="./javascripts/dropbox_write.js"></script> -->
+<!-- <script src="./javascripts/dbOps.js"></script> -->
 </body>
 </html>
+
+
+<!--
+
+	Notes:
+
+	o Can I write CSS that selectively alters the site box so that input scales accordingly?
+		- Because even worse than similar styling is having editor be able to alter website itself
+
+    o I don't need special routes since I'm using socket.io (just add event listeners to one i have)
+	
+	Design Decisions:
+
+	o Scale factor is necessary for desktop sites, but not mobile
+	 - I need to figure out how I'm going to be running a separate (scaled) version of the CSS
+	o Mobile will consist of three screens: editors, hotkeys, screen
+	 - mobile screen is full-size
+
+	Considerations:
+
+	o Auto-tag finishing for HTML. 
+	o Write code that moves cursor back to indented area in CSS after auto bracket
+	http://stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area
+
+	-->
