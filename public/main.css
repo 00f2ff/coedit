@@ -112,7 +112,9 @@ body {
 
 #coedit_name-form {
 	position: absolute;
-	margin: 50 auto;
+	/*margin-top: 2em;*/
+	/*margin-bottom: 2em;*/
+	margin-left: 14%;
 	visibility: hidden;
 }
 
@@ -177,10 +179,5 @@ body {
 		margin-left: 10%;
 	}
 
-	#coedit_name-form {
-		position: absolute;
-		margin: 50 auto;
-		visibility: hidden;
-	}
 	
 }

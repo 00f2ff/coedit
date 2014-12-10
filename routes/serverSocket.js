@@ -2,7 +2,7 @@ var mongo = require("./../models/mymongo.js");
 
 exports.init = function(io) {
 	var users = 0; // keep track of current number of users
-	// Make sure no more than 2 users are using application
+	// App only works well if two people use it. More people can work on the editors, but then there are 2 people doing CSS, etc
 
 	var indent = '  '; // permits indentation size change
 	var markup = '<html>\n' +
