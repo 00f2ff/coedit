@@ -111,7 +111,7 @@ exports.init = function(io) {
 			// Upon disconnect, send disconnection event to other player
 			socket.on('disconnect', function() {
 				--users;
-				socket.broadcast.emit('quit'); // i'm not sure what to put here
+				socket.broadcast.emit('quit');
 			});
 		});
 	}

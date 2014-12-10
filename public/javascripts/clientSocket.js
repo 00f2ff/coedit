@@ -1,6 +1,5 @@
 var socket = io.connect(':8000/');
 
-
 // Set intial username
 var username = {name: ''}; // store who user is
 loadDataFromLocalStorage(); // update if needed
@@ -68,7 +67,7 @@ socket.on('user', function(data) {
 	});
 
 	// website save handler
-	$('#coedit_save-website-form button').click(function() { // the click sometimes registers twice
+	$('#coedit_save-website-form button').on('mouseup', function() { // the click sometimes registers twice
 		var name = $('#coedit_save-website-form input[name="name"]').val();
 		var htmlCode = $('#coedit_html-editor').val();
 		var cssCode = $('#coedit_css-editor').val();
@@ -86,7 +85,6 @@ socket.on('user', function(data) {
 	// website the same thing, and I have no good way of knowing which is which
 
 	// list all sites handler
-	//$('#coedit_website-info').on('click', '#coedit_list-all-sites', function() {
 	$('#coedit_list-all-sites').click(function() {
 		socket.emit('list-all-sites', {'check': 'yes'});
 	});
@@ -113,6 +111,7 @@ socket.on('user', function(data) {
 	 *
 	 * As a result, I have decided to just ask users to design their webpages in a responsive
 	 * manner, using ems and %s, which will remove my need to use a scale factor.
+	 * It also means they can use the app on mobile similarly to the way they use it on a computer
 	 */
 
 	
@@ -172,12 +171,14 @@ socket.on('loaded-code', function(data) {
 	$('#coedit_css-editor').val(data.doc[0].cssCode);
 	$('#coedit_site-box').html(data.doc[0].htmlCode + 
 		'<style>' + data.doc[0].cssCode + '</style');
+	//** Note: both users need to press enter in order to properly apply the code changes
 });
 
 socket.on('quit', function() {
 	window.location = '/'; 
-	/* For now whoever was CSS becomes HTML. In the future I should make the user count in
-	 * serverSocket.js smarter so users won't have to switch roles.
+	/* When a user quits, the other takes their place and the user that quit loses their work.
+	 * It's important to save to avoid losing everything. While this prevents a user from staying
+	 * a CSS editor, it also means that teams can save a file and then switch roles.
 	 */
 });
 
