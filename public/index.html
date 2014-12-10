@@ -6,7 +6,7 @@
 <body>
 	<div id="coedit_container">
 		<div id="coedit_title">
-			<span id="coedit_app-title">Coedit</span>
+			<span id="coedit_app-title">Coedit</span><br>
 			<span class="coedit_instructions">Make responsive websites.</span>
 		</div>
 		<div id="coedit_editor-box">
@@ -27,11 +27,14 @@
 			</div>
 			<div id="coedit_website-list"></div>
 		</div>
+		<!-- <div id="credz">Created by <a target="_blank" href="http://duncanmcisaac.com">Duncan McIsaac</a></div> -->
 		<form id="coedit_name-form">
 			<label>Name: </label><input type="text" name="name"/>
 			<button>Submit</button>
 		</form>
+
 	</div>
+	
 
 <!-- Put JavaScript at end of body -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -43,13 +46,19 @@
 <script>
 var indent = '  '; // permits indentation size change
 var markup = '<html>\n' +
-							'<head>\n' + indent + 
-								'<title></title>\n' + 
-							'</head>\n' + 
-							'<body>\n' + indent + '\n' + 
-							'</body>\n' + 
-							'</html>'; // default markup string
+				'<head>\n' + indent + 
+					'<title></title>\n' + 
+				'</head>\n' + 
+				'<body>\n' + indent + '\n' + 
+				'</body>\n' + 
+			 '</html>'; // default markup string
 $('#coedit_html-editor').val(markup);
+// zippy little anagram
+$('#coedit_app-title').mouseenter(function() { 
+	$(this).text('codeit');
+}).mouseleave(function() {
+	$(this).text('coedit');
+});
 </script>
 
 <!-- Client-side javascript -->

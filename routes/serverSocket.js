@@ -74,7 +74,7 @@ exports.init = function(io) {
 			}
 
 			/* Database listeners */
-			socket.on('website-save', function(data) {
+			socket.on('website-save', function(data) { // sometimes this saves twice, but not often
 				mongo.create(data.query, function(docs) {
 					// console.log(docs[0].name + " was saved to the database");
 					// console.log('content: ' + docs[0].content);
@@ -85,7 +85,6 @@ exports.init = function(io) {
 						socket.broadcast.emit('refresh-websites', {'docs': docs});
 					});
 					// mongo.deleteAll(); // this is here for test purposes
-			// *** problem: it's saving twice (sometimes)
 				});
 			});
 
