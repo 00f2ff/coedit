@@ -67,8 +67,8 @@ socket.on('user', function(data) {
 	});
 
 	// website save handler
-	$('#coedit_save-website-form button').submit(function(ev) {
-		// ev.preventDefault(); // stop normal form behavior
+	$('#coedit_save-website-form button').on('mouseup',function(ev) {
+		ev.preventDefault(); // stop normal form behavior
 		var name = $('#coedit_save-website-form input[name="name"]').val();
 		var htmlCode = $('#coedit_html-editor').val();
 		var cssCode = $('#coedit_css-editor').val();
@@ -79,7 +79,7 @@ socket.on('user', function(data) {
 		}
 		socket.emit('website-save', {'query': query});
 
-		return false; // stop normal form behavior
+		// return false; // stop normal form behavior
 
 	});
 	// allowing an update handler is questionable because different people can name their
