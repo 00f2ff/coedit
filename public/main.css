@@ -87,6 +87,7 @@ body {
 
 #coedit_list-all-sites {
 	margin-top: 5%;
+	margin-bottom: 5%;
 	float: left;
 }
 
@@ -177,7 +178,9 @@ body {
 
 	#coedit_list-all-sites {
 		float: left;
+		margin-top: 0%;
 		margin-left: 10%;
+		margin-bottom: 0%;
 	}
 
 	
